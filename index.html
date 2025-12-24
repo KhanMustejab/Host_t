@@ -12,6 +12,28 @@
     <p>This is a minimal site for the <strong>Host_t</strong> repository.</p>
     <p>Publish this repo's <code>main</code> or <code>gh-pages</code> branch to GitHub Pages to view it.</p>
     <p><a href="https://github.com/KhanMustejab/Host_t">Repository on GitHub</a></p>
+
+    <section class="demo">
+      <div class="image-wrap">
+        <img src="assets/clock.svg" alt="Clock illustration">
+      </div>
+
+      <div class="timer">
+        <h2>Countdown Timer</h2>
+        <div class="display" id="display">00:30</div>
+        <div class="controls">
+          <label>
+            Seconds:
+            <input id="seconds" type="number" min="1" value="30">
+          </label>
+          <button id="start">Start</button>
+          <button id="pause">Pause</button>
+          <button id="reset">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <script src="timer.js"></script>
   </main>
   <footer>
     <p>© KhanMustejab</p>
