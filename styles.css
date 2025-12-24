@@ -1,0 +1,23 @@
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  max-width: 48rem;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+h1 {
+  color: #0b69ff;
+  margin-bottom: 0.25rem;
+}
+
+p {
+  line-height: 1.6;
+}
+
+footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
