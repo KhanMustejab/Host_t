@@ -9,14 +9,29 @@
 <body>
   <main>
     <section class="demo">
-      <div class="image-wrap">
-        <img src="assets/clock.svg" alt="Clock illustration">
-      </div>
-
       <div class="timer">
-        <h2>Countdown</h2>
-        <div class="display" id="display">02:00:00:00</div>
-        <p class="note">Static countdown — starts at 2 days and updates automatically.</p>
+        <h2>Countdown to 26 Dec 2025 — 6:00 AM IST</h2>
+
+        <div id="countdown" class="countdown">
+          <div class="unit">
+            <div class="num" id="days">00</div>
+            <div class="label">Days</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="hours">00</div>
+            <div class="label">Hours</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="minutes">00</div>
+            <div class="label">Minutes</div>
+          </div>
+          <div class="unit">
+            <div class="num" id="seconds">00</div>
+            <div class="label">Seconds</div>
+          </div>
+        </div>
+
+        <p class="note">Event: 26 Dec 2025 — 06:00 AM IST</p>
       </div>
     </section>
 
