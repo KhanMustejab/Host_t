@@ -95,8 +95,9 @@ main {
 @media (max-width: 520px) {
   body { margin: 1rem auto; padding: 0 0.75rem; }
   main { padding: 1rem; }
-  .countdown { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
-  .unit { padding: 0.5rem 0.4rem; }
+  /* Keep countdown units in a single horizontal line on small screens */
+  .countdown { display: flex; flex-wrap: nowrap; gap: 0.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .unit { flex: 0 0 72px; padding: 0.5rem 0.4rem; }
   .num { font-size: 1.2rem; }
   .label { font-size: 0.7rem; }
   .timer h2 { font-size: 1.05rem; }
