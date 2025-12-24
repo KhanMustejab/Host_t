@@ -1,46 +1,36 @@
-// Static countdown: persistent 2-day timer (stores end timestamp in localStorage)
-const display = document.getElementById('display');
-if (!display) throw new Error('Display element not found');
+// Countdown to fixed target: 26 Dec 2025 06:00:00 IST (UTC+5:30)
+// Convert to UTC: 2025-12-26 00:30:00Z
+const daysEl = document.getElementById('days');
+const hoursEl = document.getElementById('hours');
+const minutesEl = document.getElementById('minutes');
+const secondsEl = document.getElementById('seconds');
+if (!daysEl || !hoursEl || !minutesEl || !secondsEl) throw new Error('Countdown elements missing');
 
-const TWO_DAYS_MS = 2 * 24 * 60 * 60 * 1000;
-const STORAGE_KEY = 'host_t_timer_target';
+const TARGET_ISO = '2025-12-26T00:30:00Z';
+const target = Date.parse(TARGET_ISO);
 
-function pad(n) { return n.toString().padStart(2, '0'); }
-
-function getTarget() {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored) {
-    const t = parseInt(stored, 10);
-    if (!isNaN(t)) return t;
-  }
-  const t = Date.now() + TWO_DAYS_MS;
-  localStorage.setItem(STORAGE_KEY, String(t));
-  return t;
-}
-
-let target = getTarget();
-
-function formatRemaining(ms) {
-  let sec = Math.max(0, Math.floor(ms / 1000));
-  const days = Math.floor(sec / (24 * 3600));
-  sec -= days * 24 * 3600;
-  const hours = Math.floor(sec / 3600);
-  sec -= hours * 3600;
-  const minutes = Math.floor(sec / 60);
-  const seconds = sec - minutes * 60;
-  return `${pad(days)}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-}
+function pad(n){return String(n).padStart(2,'0');}
 
 function update() {
   const now = Date.now();
-  const remainingMs = target - now;
-  if (remainingMs <= 0) {
-    display.textContent = '00:00:00:00';
-    // optionally clear stored target so it won't stay expired on reload
-    // localStorage.removeItem(STORAGE_KEY);
-    return;
+  let diff = Math.max(0, Math.floor((target - now) / 1000));
+  const days = Math.floor(diff / (24*3600));
+  diff -= days * 24*3600;
+  const hours = Math.floor(diff / 3600);
+  diff -= hours * 3600;
+  const minutes = Math.floor(diff / 60);
+  const seconds = diff - minutes * 60;
+
+  daysEl.textContent = pad(days);
+  hoursEl.textContent = pad(hours);
+  minutesEl.textContent = pad(minutes);
+  secondsEl.textContent = pad(seconds);
+
+  if (target - now <= 0) {
+    clearInterval(intervalId);
+    // show zeros when done
+    daysEl.textContent = '00'; hoursEl.textContent='00'; minutesEl.textContent='00'; secondsEl.textContent='00';
   }
-  display.textContent = formatRemaining(remainingMs);
 }
 
 update();
