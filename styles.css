@@ -4,7 +4,8 @@ body {
   margin: 3rem auto;
   padding: 0 1rem;
   color: #0f172a;
-  background: #ffffff;
+  background: url('assets/abg.jpeg') center/cover no-repeat fixed;
+  min-height: 100vh;
 }
 
 h1 {
@@ -20,6 +21,13 @@ footer {
   margin-top: 3rem;
   font-size: 0.9rem;
   color: #6b7280;
+}
+
+main {
+  background: rgba(255,255,255,0.86);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.15);
 }
 
 .demo {
